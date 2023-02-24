@@ -1,0 +1,67 @@
+server:
+  port: 8901
+spring:
+  application:
+    name: mbql-mongo-demo
+
+#mongodb:
+# 默认静态方式
+#  url: mongodb://root:sueno.@192.168.31.128:27017,192.168.31.128:27018,192.168.31.128:27019/test?replicaSet=rs0&tls=true&authSource=admin&tlsAllowInvalidHostnames=true&compressors=zstd&zlibCompressionLevel=6
+#  url: mongodb://root:123456@192.168.31.128:27020/test
+#  auth-user-name: root
+#  password: sueno.
+# 动态配置方式
+#  url: mongodb://192.168.31.128:27017,192.168.31.128:27018,192.168.31.128:27019/test
+#  invalid-host-name-allowed: true
+#  enable-ssl: true
+#  certs:
+#    password: sueno.
+#    trustStoreName: cacerts
+#    keyStoreName: keystore.pkcs12
+#  use-static-mode: true
+#  enable-ssl: true
+#  database: admin
+#  cluster-type: replica_set
+#  cluster-connection-mode: multiple
+#  repl-set-name: rs0
+#  auth-user-name: root
+#  password: 123456
+
+# 默认模式
+#mongodb:
+#  url: mongodb://192.168.43.128:27020/test
+#  auth-user-name: root
+#  password: sueno.
+#  database: admin
+
+# SSL / TLS 静态模式
+#mongodb:
+#  url: mongodb://192.168.43.128:27017,192.168.43.128:27018,192.168.43.128:27019/test
+#  enable-ssl: true
+#  use-static-mode: true
+#  cluster-type: replica_set
+#  cluster-connection-mode: multiple
+##  database: admin # 认证数据库
+##  repl-set-name: rs0 # 副本集名称
+#  invalid-host-name-allowed: true # 允许无效主机连接, 默认是只能本机
+##  auth-user-name: root # 认证用户名
+##  password: sueno. # 认证用户密码
+#  certs:
+#    password: sueno.  # 证书密钥密码
+#    trustStoreName: cacerts  # JVM 信任证书名称
+#    keyStoreName: keystore.pkcs12 # JVM 密钥证书名称
+
+# SSL / TLS 动态模式
+mongodb:
+  url: mongodb://192.168.43.128:27017,192.168.43.128:27018,192.168.43.128:27019/test
+  invalid-host-name-allowed: true
+  enable-ssl: true
+  cluster-type: replica_set
+  cluster-connection-mode: multiple
+  repl-set-name: rs0
+  certs:
+    password: sueno.
+    trustStoreName: cacerts
+    keyStoreName: keystore.pkcs12
+
+
