@@ -27,14 +27,14 @@ spring:
 #  auth-user-name: root
 #  password: 123456
 
-# 默认模式
+# 默认模式（单机模式）
 #mongodb:
 #  url: mongodb://192.168.43.128:27020/test
 #  auth-user-name: root
 #  password: sueno.
 #  database: admin
 
-# SSL / TLS 静态模式
+# SSL / TLS 静态模式 （副本集模式）
 #mongodb:
 #  url: mongodb://192.168.43.128:27017,192.168.43.128:27018,192.168.43.128:27019/test
 #  enable-ssl: true
@@ -51,17 +51,58 @@ spring:
 #    trustStoreName: cacerts  # JVM 信任证书名称
 #    keyStoreName: keystore.pkcs12 # JVM 密钥证书名称
 
-# SSL / TLS 动态模式
+# SSL / TLS 动态模式 （副本集模式）
+#mongodb:
+#  url: mongodb://192.168.43.128:27017,192.168.43.128:27018,192.168.43.128:27019/test
+#  invalid-host-name-allowed: true
+#  enable-ssl: true
+#  cluster-type: replica_set
+#  cluster-connection-mode: multiple
+#  repl-set-name: rs0
+#  certs:
+#    password: sueno.
+#    trustStoreName: cacerts
+#    keyStoreName: keystore.pkcs12
+
+# SSL / TLS 静态模式 （分片模式）
+#mongodb:
+#  url: mongodb://192.168.43.128:27017/test
+#  enable-ssl: true
+#  use-static-mode: true
+#  cluster-type: sharded
+#  cluster-connection-mode: multiple
+#  invalid-host-name-allowed: true # 允许无效主机连接, 默认是只能本机
+#  certs:
+#    password: sueno.  # 证书密钥密码
+#    trustStoreName: cacerts  # JVM 信任证书名称
+#    keyStoreName: keystore.pkcs12 # JVM 密钥证书名称
+
+# SSL / TLS 基于 JDK 的 动态模式（分片模式）
+#mongodb:
+#  url: mongodb://192.168.43.128:27017/test
+#  invalid-host-name-allowed: true
+#  enable-ssl: true
+#  cluster-type: sharded
+#  cluster-connection-mode: multiple
+#  certs:
+#    password: sueno.
+#    trustStoreName: cacerts
+#    keyStoreName: keystore.pkcs12
+
+# SSL / TLS 基于 Netty 的 动态模式（分片模式）
 mongodb:
-  url: mongodb://192.168.43.128:27017,192.168.43.128:27018,192.168.43.128:27019/test
+  url: mongodb://192.168.43.128:27017/test
   invalid-host-name-allowed: true
   enable-ssl: true
-  cluster-type: replica_set
+  cluster-type: sharded
   cluster-connection-mode: multiple
-  repl-set-name: rs0
   certs:
     password: sueno.
     trustStoreName: cacerts
     keyStoreName: keystore.pkcs12
-
+  use-dynamic-netty-mode: true
+logging:
+  level:
+    org:
+      mongodb: info
 
